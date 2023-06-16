@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package tutorial;
+
+option java_package = "sr.proto";
+option java_outer_classname = "PartyProto";
+
+message Party {
+  string name = 1;
+  string city = 2;
+  int32 tickets = 3;
+  repeated string artists = 4;
+}
+
+service PartyService {
+  rpc SubscribeToParty(PartyRequest) returns (stream Party);
+}
+
+message PartyRequest {
+  string city = 1;
+  int32 tickets = 2;
+}
